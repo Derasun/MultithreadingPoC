@@ -1,11 +1,11 @@
 # MultithreadingPoC
 
 # Wat is multithreading?
-Een thread van een proces voert achtereenvolgend opdrachten uit die de developer heeft gespecificeerd. Iedere applicatie heeft tenminste een thread(main thread), maar kan meer threads starten om taken tegelijkertijd uit te voeren. Iedere thread heeft een eigen stack, cpu register en instruction pointer. De heap en static/global data zijn gedeeld.
-In een computer met meerdere cpu cores kunnen processen en threads parallel worden uitgevoerd.
+Een thread van een proces voert achtereenvolgend opdrachten uit die de developer heeft gespecificeerd. Iedere applicatie heeft tenminste een thread(main thread), maar kan meer threads starten om taken tegelijkertijd uit te voeren. Ieder computer proces heeft een cpu register, program of instruction pointer en een stack. Een proces kan op een of dus meerdere threads (multi threading) runnen. Iedere thread heeft ook een eigen stack, cpu register en instruction pointer. De heap en static/global data zijn gedeeld.
+In een computer met meerdere cpu cores kunnen processen en threads parallel worden uitgevoerd als dit zo is developed.
 
 # Wanneer gebruik je meerdere threads?
-Je kunt threads gebruiken om instructies op uit te voeren zonder de main thread te onderbreken.  Het voordeel ervan is dat een programma sneller kan zijn, door taken te verdelen over threads. Een ander voordeel is dat je programma meer responsive kan zijn, bijvoorbeeld in het geval dat je de event loop van een ui op een thread uitvoert die nooit geblokkeerd wordt door zware of lange taken. 
+Je kunt threads gebruiken om instructies op uit te voeren zonder de main thread te onderbreken.  Het voordeel ervan is dat een programma sneller kan zijn, door taken die paralel kunnen worden uitgevoerd te verdelen over verschillende threads. Een ander voordeel is dat je programma beter blijft reageren, bijvoorbeeld als men in Word een afdrukvoorbeeld wil genereren en afdrukken, dan kun je evengoed blijven werken en blijft Word niet "hangen"/ wachten totdat het voorbeeld gegenereerd of afgedrukt is. 
 
 # Wat zijn drie veel voorkomende problemen bij multithreaded applications? Waardoor ontstaan ze?
 Het feit dat verschillende threads data uit de heap delen is een voor- en nadeel. Het is een voordeel omdat het communicatie tussen threads vergemakkelijkt. Het nadeel is dat ze elkaar in de weg kunnen zitten en crashes van het proces kunnen veroorzaken. Debuggen en testen ervan is moeilijk, omdat problemen erg timing-afhankelijk en moeilijk te identificeren zijn: ze manifesteren vaak pas onder stressvolle condities. Problemen die zich voordoen:
@@ -45,8 +45,8 @@ Beter voorkomen, dan genezen:
 	Dit doet hetzelfde in Java. Het lockObject moet een instantie van de Lock class zijn. Je kunt ook het synchronized keyword in de signatuur van een methode gebruiken, dan wordt het parent object (this) als lock object gebruikt en heb je niet de flexibliteit van een custom lock object. Daarnaast kun je in Java (vergelijkbaar met C#) werken met lockObject.lock() (C# Enter) en .unlock (C# Exit) voor nog meer flexibiliteit. 
 	
 
-# Bronnen
-https://www.backblaze.com/blog/whats-the-diff-programs-processes-and-threads/
+# Bronnenlijst
+
 https://docs.microsoft.com/nl-nl/archive/blogs/vancem/encore-presentation-what-every-dev-must-know-about-multithreaded-apps
 https://www.webucator.com/how-to/how-prevent-race-conditions-java-8.cfm
 https://medium.com/swlh/race-conditions-locks-semaphores-and-deadlocks-a4f783876529
@@ -54,3 +54,4 @@ https://www.pluralsight.com/guides/lock-statement-access-data
 
 https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)
 https://marcja.wordpress.com/2007/04/06/four-reasons-to-use-multithreading/
+https://www.backblaze.com/blog/whats-the-diff-programs-processes-and-threads/
