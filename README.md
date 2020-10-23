@@ -1,4 +1,4 @@
-# MultithreadingPoC
+## MultithreadingPoC
 
 # Wat is multithreading?
 Een thread van een proces voert achtereenvolgend opdrachten uit die de developer heeft gespecificeerd. Iedere applicatie heeft tenminste een thread(main thread), maar kan meer threads starten om taken tegelijkertijd uit te voeren. Ieder computer proces heeft een cpu register, program of instruction pointer en een stack. Een proces kan op een of dus meerdere threads (multi threading) runnen. Iedere thread heeft ook een eigen stack, cpu register en instruction pointer. De heap en static/global data zijn gedeeld.
