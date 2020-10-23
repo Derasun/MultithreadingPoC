@@ -15,7 +15,7 @@ Het feit dat verschillende threads data uit de heap delen is een voor- en nadeel
 3) Starvation: Als een thread een bepaalde resource vaak nodig heeft, maar te weinig kan bereiken omdat een zware taak in een andere thread de toegang te veel blokkeert.
 
 ## Hoe wordt het onderdeel genoemd waar objecten in het geheugen worden geplaatst?
-Dit wordt de Heap genoemd
+Dit wordt de Heap genoemd.
 
 ### Hoe is dit verschillend in een multithreaded application?
 Er zijn geen verschillen.
