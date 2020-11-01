@@ -10,15 +10,15 @@ Je kunt threads gebruiken om instructies op uit te voeren zonder de main thread 
 ## Wat zijn drie veel voorkomende problemen bij multithreaded applications? Waardoor ontstaan ze?
 Het feit dat verschillende threads data uit de heap delen levert voordelen op zoals snelheid, maar het kan in sommige gevallen ook voor nadelen zorgen. Het is een voordeel omdat het communicatie tussen threads vergemakkelijkt. Het nadeel is dat ze elkaar in de weg kunnen zitten en crashes van het proces kunnen veroorzaken. Debuggen en testen ervan is lastig, omdat problemen erg timing-afhankelijk en moeilijk te identificeren zijn: ze doen vaak pas voor onder stressvolle condities. Problemen die zich voordoen zijn:
 
-	1) Race: Races doen zich bijvoorbeeld voor als twee threads beide een counter willen ophogen. De threads hebben hun eigen register waar de waarde tijdelijk wordt opgeslagen (snelheid) en daarna wordt de waarde opgeslagen in de heap (object fields) of het data-segment op de RAM (globals en statics). Terwijl de waarde in een register zit heeft een andere thread er geen weet van. Als beide threads hun resultaat willen opslaan in RAM kan een ophoging worden gemist. 
+1) Race: Races doen zich bijvoorbeeld voor als twee threads beide een counter willen ophogen. De threads hebben hun eigen register waar de waarde tijdelijk wordt opgeslagen (snelheid) en daarna wordt de waarde opgeslagen in de heap (object fields) of het data-segment op de RAM (globals en statics). Terwijl de waarde in een register zit heeft een andere thread er geen weet van. Als beide threads hun resultaat willen opslaan in RAM kan een ophoging worden gemist. 
 	
-	2) Deadlock: Dat gebeurt als een thread een exclusive resource (lock) kan vasthouden, terwijl hij op een andere wacht. Als threads vervolgens cyclisch deze resources opvragen kunnen ze elkaar blokkeren. Een oplossing is om meerdere van deze resources (locks) altijd in dezelfde volgorde op te vragen, dan sluiten threads netjes achter in de rij aan.
+2) Deadlock: Dat gebeurt als een thread een exclusive resource (lock) kan vasthouden, terwijl hij op een andere wacht. Als threads vervolgens cyclisch deze resources opvragen kunnen ze elkaar blokkeren. Een oplossing is om meerdere van deze resources (locks) altijd in dezelfde volgorde op te vragen, dan sluiten threads netjes achter in de rij aan.
 bijv. thread 1:	lock(left) lock(right)		thread 2:	lock(right) lock(left) 
 kan een deadlockveroorzaken, als zowel lock(left) door thread 1 gelocked wordt, en thread 2 locked (right). Dit is dus op te lossen door:
 thread 1: lock(left) lock(right)		thread 2:	lock(left)	lock(right)
 op deze manier kunnen nooit beide locks gelocked zijn door verschillende threads, waardoor een op de ander zou moeten wachten.
 
-	3) Starvation: Als een thread een bepaalde resource vaak nodig heeft, maar te weinig kan bereiken omdat een zware taak in een andere thread de toegang te veel/lang heeft geblokkeerd.
+3) Starvation: Als een thread een bepaalde resource vaak nodig heeft, maar te weinig kan bereiken omdat een zware taak in een andere thread de toegang te veel/lang heeft geblokkeerd.
 
 ## Hoe wordt het onderdeel genoemd waar objecten in het geheugen worden geplaatst?
 Dit wordt de Heap genoemd.
@@ -34,15 +34,15 @@ Iedere thread heeft zijn eigen Stack, waardoor er dus meerdere stacks beschikbaa
 
 ## Wat is in dit kader een racing condition? Hoe zou je dit kunnen voorkomen?
 Er zijn verschillende condities waarbij een race kan ontstaan:
-	1) memory location die te bereiken is vanuit meerdere threads.
-	2) eigenschap van de data in die locatie die van belang is voor juiste uitvoering van programma.
-	3) de eigenschap klopt niet op elk moment.
-	4) een andere thread krijgt toegang op dat moment.
+1) memory location die te bereiken is vanuit meerdere threads.
+2) eigenschap van de data in die locatie die van belang is voor juiste uitvoering van programma.
+3) de eigenschap klopt niet op elk moment.
+4) een andere thread krijgt toegang op dat moment.
 
 Beter voorkomen, dan genezen: 
-	1) en 2) zijn deels te beperken door gebruik van globals en statics te beperken of zelfs vermijden, en state te minimaliseren.	
-	3) voorkomen door objecten immutable te maken, dus fields final (const/readonly) te maken. 
-	4) voorkomen door te werken met Locks zoals in mijn code.
+1) en 2) zijn deels te beperken door gebruik van globals en statics te beperken of zelfs vermijden, en state te minimaliseren.	
+3) voorkomen door objecten immutable te maken, dus fields final (const/readonly) te maken. 
+4) voorkomen door te werken met Locks zoals in mijn code.
 
 
 ## Bronnenlijst
