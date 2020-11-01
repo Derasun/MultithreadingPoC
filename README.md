@@ -46,8 +46,8 @@ Beter voorkomen, dan genezen:
 
 
 ## Bronnenlijst
-	1) https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)
-	2) https://marcja.wordpress.com/2007/04/06/four-reasons-to-use-multithreading/
-	3) https://www.backblaze.com/blog/whats-the-diff-programs-processes-and-threads/
-	4) https://docs.microsoft.com/nl-nl/archive/blogs/vancem/encore-presentation-what-every-dev-must-know-about-multithreaded-apps
-	5) https://medium.com/swlh/race-conditions-locks-semaphores-and-deadlocks-a4f783876529
+1) https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)
+2) https://marcja.wordpress.com/2007/04/06/four-reasons-to-use-multithreading/
+3) https://www.backblaze.com/blog/whats-the-diff-programs-processes-and-threads/
+4) https://docs.microsoft.com/nl-nl/archive/blogs/vancem/encore-presentation-what-every-dev-must-know-about-multithreaded-apps
+5) https://medium.com/swlh/race-conditions-locks-semaphores-and-deadlocks-a4f783876529
