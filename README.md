@@ -33,26 +33,20 @@ Iedere thread heeft zijn eigen Stack, waardoor er dus meerdere stacks beschikbaa
 
 ## Wat is in dit kader een racing condition? Hoe zou je dit kunnen voorkomen?
 Er zijn verschillende condities waarbij een race kan ontstaan:
-1 memory location die te bereiken is vanuit meerdere threads.
-2 eigenschap van de data in die locatie die van belang is voor juiste uitvoering van programma.
-3 de eigenschap klopt niet op elk moment.
-4 een andere thread krijgt toegang op dat moment.
+	1 memory location die te bereiken is vanuit meerdere threads.
+	2 eigenschap van de data in die locatie die van belang is voor juiste uitvoering van programma.
+	3 de eigenschap klopt niet op elk moment.
+	4 een andere thread krijgt toegang op dat moment.
 
 Beter voorkomen, dan genezen: 
-- 1 en 2 zijn deels te beperken door gebruik van globals en statics te beperken of zelfs vermijden, en state te minimaliseren.
-- 3 voorkomen door objecten immutable te maken, dus fields final (const/readonly) te maken. 
-- 4 voorkomen door te werken met Locks:
+	1 en 2 zijn deels te beperken door gebruik van globals en statics te beperken of zelfs vermijden, en state te minimaliseren.	
+	3 voorkomen door objecten immutable te maken, dus fields final (const/readonly) te maken. 
+	4 voorkomen door te werken met Locks zoals in mijn code.
 
-	C#: lock(lockObject){}
-Under the hood worden in .NET methodes Enter en Exit van System.Threading.Monitor gebruikt. Deze laten weten of een thread toegang heeft. Andere threads wachten dan tot het Lock-object (Object class) vrijgegeven is, voordat zij toegang krijgen. De Monitor class heeft meer bruikbare methodes om threads te laten samenwerken. 
-	
-	Java: synchronized(lockObject){} 
-Dit doet hetzelfde in Java. Het lockObject moet een instantie van de Lock class zijn. Je kunt ook het synchronized keyword in de signatuur van een methode gebruiken, dan wordt het parent object (this) als lock object gebruikt en heb je niet de flexibliteit van een custom lock object. Daarnaast kun je in Java (vergelijkbaar met C#) werken met lockObject.lock() (C# Enter) en .unlock (C# Exit) voor nog meer flexibiliteit. 
-	
 
 ## Bronnenlijst
-https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)
-https://marcja.wordpress.com/2007/04/06/four-reasons-to-use-multithreading/
-https://www.backblaze.com/blog/whats-the-diff-programs-processes-and-threads/
-https://docs.microsoft.com/nl-nl/archive/blogs/vancem/encore-presentation-what-every-dev-must-know-about-multithreaded-apps
-https://medium.com/swlh/race-conditions-locks-semaphores-and-deadlocks-a4f783876529
+1 https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)
+2 https://marcja.wordpress.com/2007/04/06/four-reasons-to-use-multithreading/
+3 https://www.backblaze.com/blog/whats-the-diff-programs-processes-and-threads/
+4 https://docs.microsoft.com/nl-nl/archive/blogs/vancem/encore-presentation-what-every-dev-must-know-about-multithreaded-apps
+5 https://medium.com/swlh/race-conditions-locks-semaphores-and-deadlocks-a4f783876529
